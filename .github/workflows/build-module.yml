@@ -16,7 +16,7 @@ jobs:
             pkgarch: aarch64_generic
             target: rockchip
             subtarget: armv8
-            vermagic: "2d23b8a4ca7c461cce81c262d535bcf7"
+            vermagic: "95406503857f757c242adad1c14f7d60"
             config: friendlywrt_25.0.5.config
 
     steps:
