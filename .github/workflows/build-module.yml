@@ -17,6 +17,7 @@ jobs:
             target: rockchip
             subtarget: armv8
             vermagic: "2d23b8a4ca7c461cce81c262d535bcf7"
+            config: friendlywrt_25.0.5.config
 
     steps:
       - uses: actions/checkout@v4
@@ -47,7 +48,7 @@ jobs:
           ./scripts/feeds update && ./scripts/feeds install -a
 
           # Setup config with AWG and dependencies
-          wget https://downloads.openwrt.org/releases/${{ matrix.build_env.tag }}/targets/${{ matrix.build_env.target}}/${{ matrix.build_env.subtarget}}/config.buildinfo -O .config
+          cp ${{matrix.build_env.config}} .config
           echo "CONFIG_PACKAGE_kmod-amneziawg=m" >> .config
           echo "CONFIG_PACKAGE_amneziawg-tools=y" >> .config
           echo "CONFIG_PACKAGE_luci-app-amneziawg=y" >> .config
