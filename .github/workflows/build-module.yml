@@ -26,6 +26,10 @@ jobs:
           ref: v${{ matrix.build_env.tag }}
           fetch-depth: 0
 
+      - uses: actions/checkout@v4
+        with:
+          repository: l1feforce/awg-openwrt
+
       - name: Cache Tools and Kernel
         id: cache-tools-kernel
         uses: actions/cache@v4
@@ -48,7 +52,7 @@ jobs:
           ./scripts/feeds update && ./scripts/feeds install -a
 
           # Setup config with AWG and dependencies
-          cp ${{matrix.build_env.config}} .config
+          cp awg-openwrt/${{matrix.build_env.config}} .config
           echo "CONFIG_PACKAGE_kmod-amneziawg=m" >> .config
           echo "CONFIG_PACKAGE_amneziawg-tools=y" >> .config
           echo "CONFIG_PACKAGE_luci-app-amneziawg=y" >> .config
