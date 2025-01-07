@@ -31,10 +31,6 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y python2.7
 
-      - name: Set up Python 2.7
-        run: |
-          ln -sf /usr/bin/python2.7 /usr/bin/python
-
       - name: Cache Tools and Kernel
         id: cache-tools-kernel
         uses: actions/cache@v4
