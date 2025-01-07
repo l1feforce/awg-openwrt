@@ -26,6 +26,15 @@ jobs:
 #          ref: v${{ matrix.build_env.tag }}
 #          fetch-depth: 0
 
+      - name: Install Python 2.7
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y python2
+
+      - name: Set up Python 2.7
+        run: |
+          ln -s /usr/bin/python2 /usr/bin/python
+
       - name: Cache Tools and Kernel
         id: cache-tools-kernel
         uses: actions/cache@v4
@@ -46,9 +55,9 @@ jobs:
           mkdir friendlywrt23-rk3328
           cd friendlywrt23-rk3328
           git clone https://github.com/friendlyarm/repo --depth 1 tools
-          python2 tools/repo init -u https://github.com/friendlyarm/friendlywrt_manifests -b master-v23.05 \
+          python tools/repo init -u https://github.com/friendlyarm/friendlywrt_manifests -b master-v23.05 \
             -m rk3328.xml --repo-url=https://github.com/friendlyarm/repo  --no-clone-bundle
-          python2 tools/repo sync -c  --no-clone-bundle
+          python tools/repo sync -c  --no-clone-bundle
           
           # Setup & install feeds
           cd friendlywrt
