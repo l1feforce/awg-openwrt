@@ -33,7 +33,7 @@ jobs:
 
       - name: Set up Python 2.7
         run: |
-          ln -s /usr/bin/python2.7 /usr/bin/python
+          ln -sf /usr/bin/python2.7 /usr/bin/python
 
       - name: Cache Tools and Kernel
         id: cache-tools-kernel
