@@ -17,7 +17,6 @@ jobs:
             target: rockchip
             subtarget: armv8
             vermagic: "95406503857f757c242adad1c14f7d60"
-            config: friendlywrt_25.0.5.config
 
     steps:
 #      - uses: actions/checkout@v4
@@ -61,9 +60,7 @@ jobs:
           ./scripts/feeds install -a 
 
           # Setup config with AWG and dependencies
-          echo "Configs rockchip folder"
-          ls ../configs/rockchip-docker
-          cp ../configs/rockchip-docker/config_rk3328 .config
+          cp ../configs/rockchip/01-nanopi .config
           echo "CONFIG_PACKAGE_kmod-amneziawg=m" >> .config
           echo "CONFIG_PACKAGE_amneziawg-tools=y" >> .config
           echo "CONFIG_PACKAGE_luci-app-amneziawg=y" >> .config
