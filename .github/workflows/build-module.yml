@@ -46,9 +46,9 @@ jobs:
           mkdir friendlywrt23-rk3328
           cd friendlywrt23-rk3328
           git clone https://github.com/friendlyarm/repo --depth 1 tools
-          tools/repo init -u https://github.com/friendlyarm/friendlywrt_manifests -b master-v23.05 \
+          python2 tools/repo init -u https://github.com/friendlyarm/friendlywrt_manifests -b master-v23.05 \
             -m rk3328.xml --repo-url=https://github.com/friendlyarm/repo  --no-clone-bundle
-          tools/repo sync -c  --no-clone-bundle
+          python2 tools/repo sync -c  --no-clone-bundle
           
           # Setup & install feeds
           cd friendlywrt
